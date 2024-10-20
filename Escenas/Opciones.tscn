@@ -1,0 +1,96 @@
+[gd_scene load_steps=6 format=3 uid="uid://qlilft67vymm"]
+
+[ext_resource type="Script" path="res://scripts/opciones.gd" id="1_pgi3n"]
+[ext_resource type="FontFile" uid="uid://cec7dggyhh8is" path="res://Fonts/Pixeled.ttf" id="2_iuws2"]
+[ext_resource type="Texture2D" uid="uid://prkirncrpfvu" path="res://img/Liminal Pixel 512.png" id="3_qh317"]
+[ext_resource type="Texture2D" uid="uid://c1kirt6xyrovx" path="res://img/null menu.jpg" id="4_wbe8p"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yym68"]
+
+[node name="Menú Opciones" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pgi3n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -32.0
+offset_right = 88.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0353463, 0.0353462, 0.0353462, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 224.0
+offset_right = 392.0
+offset_bottom = 490.0
+theme_override_constants/separation = 16
+
+[node name="Video" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_iuws2")
+theme_override_font_sizes/font_size = 25
+text = "VIDEO"
+
+[node name="Sound" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_iuws2")
+theme_override_font_sizes/font_size = 25
+text = "SONIDO"
+
+[node name="Back" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_iuws2")
+theme_override_font_sizes/font_size = 25
+text = "VOLVER"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 541.0
+offset_right = 116.0
+offset_bottom = 618.0
+
+[node name="Button" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "‎ "
+icon = SubResource("ViewportTexture_yym68")
+
+[node name="LiminalPixel512" type="Sprite2D" parent="VBoxContainer2"]
+position = Vector2(38, 81)
+scale = Vector2(0.308167, 0.308167)
+texture = ExtResource("3_qh317")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 40.0
+offset_right = 464.0
+offset_bottom = 180.0
+theme_override_fonts/font = ExtResource("2_iuws2")
+theme_override_font_sizes/font_size = 50
+text = "OPCIONES"
+
+[node name="Sprite2D" type="Sprite2D" parent="Label"]
+position = Vector2(740, 284.081)
+scale = Vector2(0.675, 0.672269)
+texture = ExtResource("4_wbe8p")
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Video" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Video" to="." method="_on_video_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Sound" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Sound" to="." method="_on_sound_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Back" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Back" to="." method="_on_back_pressed"]

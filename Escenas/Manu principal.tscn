@@ -1,0 +1,187 @@
+[gd_scene load_steps=14 format=3 uid="uid://djrs88ck55jx0"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_em3ke"]
+[ext_resource type="FontFile" uid="uid://bel8rxiny4p84" path="res://Fonts/DePixelBreit.otf" id="2_81i55"]
+[ext_resource type="Texture2D" uid="uid://dnykwvm8n1gh1" path="res://img/lavande title.png" id="2_335ke"]
+[ext_resource type="FontFile" uid="uid://cec7dggyhh8is" path="res://Fonts/Pixeled.ttf" id="3_4ij4h"]
+[ext_resource type="Texture2D" uid="uid://prkirncrpfvu" path="res://img/Liminal Pixel 512.png" id="3_6o378"]
+[ext_resource type="Script" path="res://Escenas/menu incio.gd" id="6_mb4hm"]
+[ext_resource type="Texture2D" uid="uid://c1kirt6xyrovx" path="res://img/null menu.jpg" id="7_4npg6"]
+
+[sub_resource type="Theme" id="Theme_420e0"]
+default_font_size = 0
+/fonts/fuente = ExtResource("2_81i55")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xvnjd"]
+
+[sub_resource type="Animation" id="Animation_oroa0"]
+resource_name = "Fade in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ti6gm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:mouse_force_pass_scroll_events")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_nunet"]
+resource_name = "menu intro"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:mouse_force_pass_scroll_events")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tn6th"]
+_data = {
+"Fade in": SubResource("Animation_oroa0"),
+"RESET": SubResource("Animation_ti6gm"),
+"menu intro": SubResource("Animation_nunet")
+}
+
+[node name="Menú Principal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_em3ke")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0353463, 0.0353462, 0.0353462, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 224.0
+offset_right = 391.0
+offset_bottom = 490.0
+theme_override_constants/separation = 16
+
+[node name="Play" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme = SubResource("Theme_420e0")
+theme_override_fonts/font = ExtResource("3_4ij4h")
+theme_override_font_sizes/font_size = 25
+text = "JUGAR"
+
+[node name="Options" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4ij4h")
+theme_override_font_sizes/font_size = 25
+text = "OPCIONES"
+
+[node name="Quit" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4ij4h")
+theme_override_font_sizes/font_size = 25
+text = "SALIR"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 541.0
+offset_right = 116.0
+offset_bottom = 618.0
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "‎ "
+icon = SubResource("ViewportTexture_xvnjd")
+
+[node name="LiminalPixel512" type="Sprite2D" parent="ColorRect/VBoxContainer2"]
+position = Vector2(38, 81)
+scale = Vector2(0.308167, 0.308167)
+texture = ExtResource("3_6o378")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(824, 328)
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("7_4npg6")
+
+[node name="LavandeTitle" type="Sprite2D" parent="."]
+position = Vector2(280, 112)
+scale = Vector2(0.963889, 0.963889)
+texture = ExtResource("2_335ke")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("6_mb4hm")
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+offset_right = 1216.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+libraries = {
+"": SubResource("AnimationLibrary_tn6th")
+}
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/Button" to="." method="_on_button_pressed"]
